@@ -394,10 +394,8 @@ public class OSManager {
 	public void showFAT() {
 
 		for(int j=0; j<125; j+=5) {
-			System.out.println("第几项 | " + j + "        " + (j+1) + "        " + (j+2) + "        "
-					+ (j+3) + "        " + (j+4));
-			System.out.println("内容 | " + fat[j] + "        " + fat[j+1] + "        " + fat[j+2]
-					 + "        " + fat[j+3] + "        " + fat[j+4]);
+			System.out.println("第几项 | " + j + "        " + (j+1) + "        " + (j+2) + "        " + (j+3) + "        " + (j+4));
+			System.out.println("内容 | " + fat[j] + "        " + fat[j+1] + "        " + fat[j+2] + "        " + fat[j+3] + "        " + fat[j+4]);
 			System.out.println();
 		}
 		int j = 125;
