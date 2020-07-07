@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="Spooling" />
+        <module name="OSProcess" />
+        <module name="pagedStorageManagement" />
+        <module name="Java-DataStructure" />
+        <module name="Page_Fault_Algorithm" />
+        <module name="File System Structure" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="File System Structure" target="7" />
+      <module name="Java-DataStructure" target="1.5" />
+      <module name="Operating-System" target="1.5" />
+      <module name="OSProcess" target="7" />
+      <module name="Page_Fault_Algorithm" target="1.5" />
+      <module name="pagedStorageManagement" target="7" />
+      <module name="Spooling" target="1.5" />
+      <module name="test" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

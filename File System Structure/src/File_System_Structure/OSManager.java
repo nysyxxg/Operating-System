@@ -2,17 +2,20 @@ package File_System_Structure;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Map.Entry;
 
+/**
+ * java语言实现操作系统中的文件管理系统
+ * https://blog.csdn.net/pudongqi/article/details/78750070
+ */
 public class OSManager {
 	//OSManager这个类实现对文件的各种操作
 
-	public Map<String, fileModel> totalFiles = new HashMap<String, fileModel>();
+	public Map<String, FileModel> totalFiles = new HashMap<String, FileModel>();
 	//定义FAT表
 	private int[] fat = new int[128]; 
 	//创建根目录 使用fat表的第一项
-	private fileModel root = new fileModel("root", 1);
-	private fileModel nowCatalog = root;
+	private FileModel root = new FileModel("root", 1);
+	private FileModel nowCatalog = root;
 	
 	public OSManager() {
 		//将FAT表初始化全部为0，并将第一位设为根目录的空间
@@ -96,11 +99,11 @@ public class OSManager {
 	public void createFile( String name, String type, int size ) {
 		
 		if( fat[ 0 ] >= size ) {	//判断磁盘剩余空间是否足够建立文件
-			fileModel value = nowCatalog.subMap.get( name ); //该目录下是否寻找同名目录或文件
+			FileModel value = nowCatalog.subMap.get( name ); //该目录下是否寻找同名目录或文件
 			if( value != null ) {  //判断该文件是否存在
 				if( value.getAttr() == 3 ) {   //若存在同名目录 继续创建文件
 					int startNum = setFat( size ); 
-					fileModel file = new fileModel( name, type, startNum, size );
+					FileModel file = new FileModel( name, type, startNum, size );
 					file.setFather( nowCatalog ); //纪录上一层目录
 					nowCatalog.subMap.put( name, file ); //在父目录添加该文件
 					totalFiles.put( file.getName(), file );
@@ -113,7 +116,7 @@ public class OSManager {
 				}
 			} else if( value == null ) { //若无同名文件或文件夹，继续创建文件
 				int startNum = setFat( size ); 
-				fileModel file = new fileModel( name, type, startNum, size );
+				FileModel file = new FileModel( name, type, startNum, size );
 				file.setFather( nowCatalog ); //纪录上一层目录
 				nowCatalog.subMap.put( name, file ); //在父目录添加该文件
 				totalFiles.put( file.getName(), file );
@@ -131,11 +134,11 @@ public class OSManager {
 		
 		if( fat[ 0 ] >= 1 ) { //判断磁盘空间是否足够创建文件夹
 			
-			fileModel value = nowCatalog.subMap.get( name ); //判断该目录下是否存在同名目录或文件
+			FileModel value = nowCatalog.subMap.get( name ); //判断该目录下是否存在同名目录或文件
 			if( value != null ) {
 				if( value.getAttr() == 2 ) {
 					int startNum = setFat( 1 );
-					fileModel catalog = new fileModel( name, startNum );
+					FileModel catalog = new FileModel( name, startNum );
 					catalog.setFather( nowCatalog ); //纪录上一层目录
 					nowCatalog.subMap.put( name, catalog );
 					fat[ 0 ]--;
@@ -150,7 +153,7 @@ public class OSManager {
 			} 
 			else if(value == null) {
 				int startNum = setFat(1);
-				fileModel catalog = new fileModel( name, startNum );
+				FileModel catalog = new FileModel( name, startNum );
 				catalog.setFather( nowCatalog ); //纪录上一层目录
 				nowCatalog.subMap.put( name, catalog );
 				fat[ 0 ]--;
@@ -174,7 +177,7 @@ public class OSManager {
 		System.out.println("***************** < " + nowCatalog.getName() + " > *****************");
        
 		if( !nowCatalog.subMap.isEmpty() ) {
-			for( fileModel value : nowCatalog.subMap.values() ) {
+			for( FileModel value : nowCatalog.subMap.values() ) {
 				if(value.getAttr() == 3) { //目录文件
 					System.out.println("File Name:" + value.getName());
 					System.out.println("Operation Type:" + "Folder");
@@ -204,7 +207,7 @@ public class OSManager {
 	 */
 	public void deleteFile(String name) {
 		
-		fileModel value = nowCatalog.subMap.get( name );
+		FileModel value = nowCatalog.subMap.get( name );
 		if( value == null ) {
 			System.out.println("Delete failed, No File or Folder!!");
 		} 
@@ -237,7 +240,7 @@ public class OSManager {
 				showFile();
 			} 
 			else {
-				fileModel value = nowCatalog.subMap.get( name );
+				FileModel value = nowCatalog.subMap.get( name );
 				value.setName( newName );
 				nowCatalog.subMap.remove( name );
 				nowCatalog.subMap.put( newName, value );
@@ -261,7 +264,7 @@ public class OSManager {
 		
 		nowCatalog = nowCatalog.getFather();
 		if( nowCatalog.subMap.containsKey( name ) ) {
-			fileModel value = nowCatalog.subMap.get( name );
+			FileModel value = nowCatalog.subMap.get( name );
 			if(value.getAttr() == 2){
 				value.setType(type);
 				nowCatalog.subMap.remove(name);
@@ -285,7 +288,7 @@ public class OSManager {
 	 */
 	public void openFile( String name ) {
 		if( nowCatalog.subMap.containsKey( name ) ) {
-			fileModel value = nowCatalog.subMap.get(name);
+			FileModel value = nowCatalog.subMap.get(name);
 			if(value.getAttr() == 2) {
 				nowCatalog = value;
 				System.out.println("The file has been opened and the file size is: " + value.getSize() );				
@@ -311,7 +314,7 @@ public class OSManager {
 		if( fat[0] >= addSize ) {
 			nowCatalog = nowCatalog.getFather();
 			if(nowCatalog.subMap.containsKey(name)) {
-				fileModel value = nowCatalog.subMap.get(name);
+				FileModel value = nowCatalog.subMap.get(name);
 				if(value.getAttr() == 2) {
 					value.setSize(value.getSize() + addSize);
 					AddFAT(value.getStartNum(), addSize);
@@ -349,7 +352,7 @@ public class OSManager {
 	 */
 	public void searchFile(String[] roadName) {
 		
-		fileModel theCatalog = nowCatalog; //设置断点纪录当前目录
+		FileModel theCatalog = nowCatalog; //设置断点纪录当前目录
 		
 		if( totalFiles.containsKey(roadName[roadName.length-1]) ) { //检查所有文件中有无该文件
 			nowCatalog = root; //返回根目录

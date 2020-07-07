@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/File System Structure/File System Structure.iml" filepath="$PROJECT_DIR$/File System Structure/File System Structure.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OSProcess/Java-DataStructure.iml" filepath="$PROJECT_DIR$/OSProcess/Java-DataStructure.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OSProcess/OSProcess.iml" filepath="$PROJECT_DIR$/OSProcess/OSProcess.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Operating-System.iml" filepath="$PROJECT_DIR$/.idea/Operating-System.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Page_Fault_Algorithm/Page_Fault_Algorithm.iml" filepath="$PROJECT_DIR$/Page_Fault_Algorithm/Page_Fault_Algorithm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Spooling/Spooling.iml" filepath="$PROJECT_DIR$/Spooling/Spooling.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pagedStorageManagement/pagedStorageManagement.iml" filepath="$PROJECT_DIR$/pagedStorageManagement/pagedStorageManagement.iml" />
+      <module fileurl="file://$PROJECT_DIR$/test/test.iml" filepath="$PROJECT_DIR$/test/test.iml" />
+    </modules>
+  </component>
+</project>

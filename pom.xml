@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <artifactId>Operating-System</artifactId>
+    <groupId>Operating-System</groupId>
+    <version>1.0-SNAPSHOT</version>
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <packaging>pom</packaging>
+    <modules>
+        <module>test</module>
+        <module>Page_Fault_Algorithm</module>
+        <module>OSProcess</module>
+        <module>pagedStorageManagement</module>
+        <module>File System Structure</module>
+        <module>Spooling</module>
+    </modules>
+
+
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/com.mxgraph/jgraphx -->
+        <!-- https://mvnrepository.com/artifact/com.mxgraph/mxgraph-all -->
+        <!--<dependency>-->
+        <!--<groupId>com.mxgraph</groupId>-->
+        <!--<artifactId>mxgraph-all</artifactId>-->
+        <!--<version>3.9.3</version>-->
+        <!--</dependency>-->
+
+
+        <!--<dependency>-->
+        <!--<groupId>com.mxgraph</groupId>-->
+        <!--<artifactId>jgraphx</artifactId>-->
+        <!--<version>3.7.4</version>-->
+        <!--</dependency>-->
+
+    </dependencies>
+
+</project>
