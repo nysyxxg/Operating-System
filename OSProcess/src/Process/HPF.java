@@ -95,8 +95,8 @@ public class HPF {
     public static void main(String arg[])//用于本类测试
     {
         Process.init_task();
-        init_task(Process.task_info, Process.task_num);
-        HRRN();
+        HPF.init_task(Process.task_info, Process.task_num);
+        HPF.HRRN();
     }
 
 }

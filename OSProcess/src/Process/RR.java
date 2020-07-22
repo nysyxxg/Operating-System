@@ -75,4 +75,12 @@ public class RR {
             }
         }
     }
+
+    public static void main(String arg[])//用于本类测试
+    {
+        Process.init_task();
+        System.out.println("\n\n时间片开始轮转：");
+        RR.init_task(Process.task_info, task_num);
+        RR.CircleTime();//时间片轮转
+    }
 }
