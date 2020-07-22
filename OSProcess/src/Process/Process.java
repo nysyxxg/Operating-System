@@ -12,9 +12,8 @@ public class Process {
     public static List<double[]> task_info = new ArrayList<>();//进程列表
     public static int task_num = 8;//进程数
 
-
-    public static void init_task()//初始化进程列表
-    {
+    //初始化进程列表
+    public static void init_task() {
         for (int i = 0; i < task_num; i++) {
             double[] t = new double[4];
             t[0] = i;//进程号
@@ -27,7 +26,6 @@ public class Process {
 
     public static void main(String arg[]) {
         Process.init_task();//初始化进程列表
-
 
         System.out.println("\n\n最高优先级算法开始运行:");
         HPF.init_task(task_info, task_num);

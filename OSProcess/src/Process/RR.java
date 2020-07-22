@@ -25,8 +25,8 @@ public class RR {
                 int current_task_time = (int) t[3];
                 int task_NO = (int) t[0];
                 System.out.print(tm.format(new Date()) + "第" + task_NO + "号进程开始运行-- ");
-                if (current_task_time <= Circle_size)//如果能够在本时间片中运行完成
-                {
+                //如果能够在本时间片中运行完成
+                if (current_task_time <= Circle_size) {
                     Thread.sleep((long) current_task_time * 1000);//模拟运行所需时间
                     System.out.println(tm.format(new Date()) + "该任务已经运行完成--本次用时" + current_task_time + "S");
                     double[] exe_t = new double[2];
@@ -50,8 +50,8 @@ public class RR {
         show_time();//显示每个进程的调度时间
     }
 
-    public static void show_time()//显示每个进程的调度时间
-    {
+    //显示每个进程的调度时间
+    public static void show_time() {
         double sum_time = 0;
         for (int i = 0; i < execute_time.size(); i++) {
             double[] t = execute_time.get(i);
@@ -62,8 +62,8 @@ public class RR {
 
     }
 
-    static void init_task(List<double[]> in, int tn)//初始化进程列表
-    {
+    //初始化进程列表
+    static void init_task(List<double[]> in, int tn) {
         task_num = tn;
         for (int i = 0; i < task_num; i++) {
             double[] t = in.get(i);
@@ -76,8 +76,8 @@ public class RR {
         }
     }
 
-    public static void main(String arg[])//用于本类测试
-    {
+    //用于本类测试
+    public static void main(String arg[]) {
         Process.init_task();
         System.out.println("\n\n时间片开始轮转：");
         RR.init_task(Process.task_info, task_num);

@@ -17,7 +17,6 @@ public class HPF {
 
 
     public static void HRRN() {
-
         for (int i = 0; i < task_num; i++) {
             get_ratio();//每次循环时计算一次响应比
             double[] tem = get_a_task();//从进程列表中得到一个最高响应比的任务
@@ -39,8 +38,8 @@ public class HPF {
 
     }
 
-    public static void show_time()//显示每个进程的周转时间
-    {
+    //显示每个进程的周转时间
+    public static void show_time() {
         double sum_time = 0;
         for (int i = 0; i < execute_time.size(); i++) {
             double[] t = execute_time.get(i);
@@ -51,8 +50,8 @@ public class HPF {
 
     }
 
-    public static double[] get_a_task()//根据响应比，返回一个最高相应比进程
-    {
+    //根据响应比，返回一个最高相应比进程
+    public static double[] get_a_task() {
         double[] rt = new double[4];
         double max_ratio = 0;
         int NO = -1;
@@ -69,8 +68,8 @@ public class HPF {
 
     }
 
-    public static void init_task(List<double[]> in, int tn)//初始化进程列表
-    {
+    //初始化进程列表
+    public static void init_task(List<double[]> in, int tn) {
         task_num = tn;
         for (int i = 0; i < in.size(); i++) {
             double[] t = in.get(i);
@@ -79,8 +78,8 @@ public class HPF {
         }
     }
 
-    public static void get_ratio()//计算每一个进程当前的响应比
-    {
+    //计算每一个进程当前的响应比
+    public static void get_ratio() {
         for (int i = 0; i < task_info.size(); i++) {
             double[] t = task_info.get(i);
             task_info.remove(i);
@@ -92,8 +91,8 @@ public class HPF {
 
     }
 
-    public static void main(String arg[])//用于本类测试
-    {
+    //用于本类测试
+    public static void main(String arg[]) {
         Process.init_task();
         HPF.init_task(Process.task_info, Process.task_num);
         HPF.HRRN();
