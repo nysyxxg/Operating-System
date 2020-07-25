@@ -7,12 +7,12 @@ import java.util.List;
  * 用于生成随机的进程列表，并测试.
  * Process.java是测试类，用于生成进程列表和测试两种不同的调度策略。
  * 常用的调度算法：
- * 1：先来来服务算法
- * 2：短作业优先(SJF)调度算法
- * 3.优先级调度算法
- * 4：高响应比优先调度算法
- * 5： 时间片开始轮转
- * 6： 多级反馈队列调度算法
+ * 1：先来来服务算法：First come First serviced
+ * 2：短作业优先(SJF)调度算法 Shortest Process Next
+ * 3. 优先级调度算法
+ * 4：高响应比优先调度算法  Highest Response Ratio Next
+ * 5：时间片开始轮转  Round Robin
+ * 6：多级反馈队列调度算法 Feedback
  *
  * 评价调度算法的指标：
  * 1：响应时间：提交任务开始,直到产生结果----评价分时系统的性能
