@@ -1,5 +1,8 @@
 package Spooling;
 
+/**
+ * 进程PCB包含的属性
+ */
 public class PCB {
     int ID;//进程标识数
     int status;//进程状态

@@ -4,8 +4,8 @@
     <file url="file://$PROJECT_DIR$/File System Structure/pom.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/OSProcess/pom.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/Page_Fault_Algorithm (LRU、LFU、FIFO)/pom.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/PagedStorageManagement/pom.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/Spooling/pom.xml" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/pagedStorageManagement/pom.xml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/pom.xml" charset="GBK" />
   </component>
 </project>
