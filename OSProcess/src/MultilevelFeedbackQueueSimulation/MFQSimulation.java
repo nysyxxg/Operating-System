@@ -388,7 +388,5 @@ class DrawLinePanel extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawLine(0, this.getSize().height / 2, this.getSize().width, this.getSize().height / 2);
-
     }
-
 }
