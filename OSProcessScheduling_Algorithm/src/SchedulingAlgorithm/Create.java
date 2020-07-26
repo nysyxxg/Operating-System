@@ -5,14 +5,14 @@ public class Create {
     public Node createNode(Node head, String name, int priority, int runtime,
                            int arrivaltime, int starttime, int endtime, int turntime, double dturntime) {
 
-        if (head == null) {
+        if (head == null) {// 创建头节点
             Node node = new Node(name, priority, runtime, arrivaltime, starttime, endtime, turntime, dturntime);
             head = node;
             return head;
         }
         Node cur = head;
         while (cur.nextnode != null) {
-            cur = cur.nextnode;
+            cur = cur.nextnode;// 一直找到最后一个节点
         }
         Node node = new Node(name, priority, runtime, arrivaltime, starttime, endtime, turntime, dturntime);
         cur.nextnode = node;
