@@ -1,5 +1,8 @@
 package SchedulingAlgorithm;
 
+/**
+ * 使用链表的结构表示任务进程
+ */
 public class Node {// 任务进程节点
     String name;  // 任务进程名称
     int priority; // 任务进程优先级
