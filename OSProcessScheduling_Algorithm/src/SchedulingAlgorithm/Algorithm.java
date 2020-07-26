@@ -1,6 +1,7 @@
 package SchedulingAlgorithm;
 
 class Algorithm {
+
     private Node pre = null;
     private Node prev = null;
     private Node min = null;
