@@ -61,6 +61,11 @@ class Algorithm {
     }
 
     //先来先服务算法
+
+    /**
+     * 缺点：对于任务时间端的任务进程是不公平的
+     * @param head
+     */
     public void Fcfs(Node head) {
         Node head2 = CreateHead(head);
         while (head2 != null) {
