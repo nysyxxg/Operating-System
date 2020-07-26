@@ -4,13 +4,10 @@ package MultilevelFeedbackQueueSimulation;
 public class PCB {
     //进程标识符
     private int pid;
-
     //进程状态标识
     private String status;
-
     //进程优先级
     private int priority;
-
     //进程生命周期
     private int life;
 

@@ -13,6 +13,7 @@ import java.util.LinkedList;
  * https://blog.csdn.net/WuchangI/article/details/80432794
  */
 public class MFQSimulation {
+
     private static JFrame frame = new JFrame("进程调度模拟（多级反馈队列）");
     private static JPanel panel = new JPanel();
     private static JScrollPane scrollPane = new JScrollPane(panel, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
@@ -48,24 +49,21 @@ public class MFQSimulation {
     //是否停止调度
     public static boolean isStopScheduling;
 
-    //很短的main函数
-    public static void main(String[] args) {
-        new MFQSimulation().initWindow();
-    }
-
-
     //执行窗口初始化
     public void initWindow() {
         //设置窗口风格为Windows风格
         setWindowsStyle();
 
         //创建菜单栏
-        processSettingsMenu.add(createProcessItem);
+        processSettingsMenu.add(createProcessItem);//  创建进程菜单
         processSettingsMenu.addSeparator();
-        processSettingsMenu.add(startMFQItem);
+
+        processSettingsMenu.add(startMFQItem);//
         processSettingsMenu.addSeparator();
+
         processSettingsMenu.add(stopMFQItem);
         processSettingsMenu.addSeparator();
+
         processSettingsMenu.add(setTimeSliceItem);
         processSettingsMenu.addSeparator();
         processSettingsMenu.add(exitSystemItem);
@@ -190,6 +188,7 @@ public class MFQSimulation {
             int randomPriority = 0 + (int) (Math.random() * ((49 - 0) + 1));
             int randomLife = 1 + (int) (Math.random() * ((5 - 1) + 1));
 
+            //创建进程的PCB
             PCB pcb = new PCB(randomPid, "Ready", randomPriority, randomLife);
 
             LinkedList<PCB> queue = PCBsQueues[randomPriority].getQueue();
@@ -319,28 +318,28 @@ public class MFQSimulation {
 
                     //JLabel默认情况下是透明的所以直接设置背景颜色是无法显示的，必须将其设置为不透明才能显示背景
 
-                    //设置pid标签
+                    //设置【pid】标签
                     JLabel pidLabel = new JLabel("Pid: " + String.valueOf(pcb.getPid()));
                     pidLabel.setOpaque(true);
                     pidLabel.setBackground(Color.GREEN);
                     pidLabel.setForeground(Color.RED);
                     pidLabel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
-                    //设置status标签
+                    //设置【status】标签
                     JLabel statusLabel = new JLabel("Status: " + pcb.getStatus());
                     statusLabel.setOpaque(true);
                     statusLabel.setBackground(Color.GREEN);
                     statusLabel.setForeground(Color.RED);
                     statusLabel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
-                    //设置priority标签
+                    //设置【priority】标签
                     JLabel priorityLabel = new JLabel("Priority: " + String.valueOf(pcb.getPriority()));
                     priorityLabel.setOpaque(true);
                     priorityLabel.setBackground(Color.GREEN);
                     priorityLabel.setForeground(Color.RED);
                     priorityLabel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
-                    //设置life标签
+                    //设置【life】标签
                     JLabel lifeLabel = new JLabel("Life: " + String.valueOf(pcb.getLife()));
                     lifeLabel.setOpaque(true);
                     lifeLabel.setBackground(Color.GREEN);
@@ -379,6 +378,10 @@ public class MFQSimulation {
         panel.repaint();
     }
 
+    //很短的main函数
+    public static void main(String[] args) {
+        new MFQSimulation().initWindow();
+    }
 }
 
 

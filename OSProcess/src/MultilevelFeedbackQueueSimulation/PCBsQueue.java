@@ -3,7 +3,7 @@ package MultilevelFeedbackQueueSimulation;
 import java.util.LinkedList;
 
 //控制块队列类
-class PCBsQueue {
+public class PCBsQueue {
     //队列优先级
     private int priority;
 
