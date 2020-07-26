@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/DiskScheduling_Algorithm/DiskScheduling_Algorithm.iml" filepath="$PROJECT_DIR$/DiskScheduling_Algorithm/DiskScheduling_Algorithm.iml" />
       <module fileurl="file://$PROJECT_DIR$/File System Structure/File System Structure.iml" filepath="$PROJECT_DIR$/File System Structure/File System Structure.iml" />
-      <module fileurl="file://$PROJECT_DIR$/OSProcess/Java-DataStructure.iml" filepath="$PROJECT_DIR$/OSProcess/Java-DataStructure.iml" />
-      <module fileurl="file://$PROJECT_DIR$/OSProcess/OSProcess.iml" filepath="$PROJECT_DIR$/OSProcess/OSProcess.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OSProcessScheduling_Algorithm/Java-DataStructure.iml" filepath="$PROJECT_DIR$/OSProcessScheduling_Algorithm/Java-DataStructure.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OSProcessScheduling_Algorithm/OSProcessScheduling_Algorithm.iml" filepath="$PROJECT_DIR$/OSProcessScheduling_Algorithm/OSProcessScheduling_Algorithm.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Operating-System.iml" filepath="$PROJECT_DIR$/.idea/Operating-System.iml" />
       <module fileurl="file://$PROJECT_DIR$/Page_Fault_Algorithm/Page_Fault_Algorithm.iml" filepath="$PROJECT_DIR$/Page_Fault_Algorithm/Page_Fault_Algorithm.iml" />
       <module fileurl="file://$PROJECT_DIR$/Spooling/Spooling.iml" filepath="$PROJECT_DIR$/Spooling/Spooling.iml" />

@@ -11,12 +11,12 @@
 
     <packaging>pom</packaging>
     <modules>
-        <module>test</module>
         <module>Page_Fault_Algorithm</module>
-        <module>OSProcess</module>
+        <module>OSProcessScheduling_Algorithm</module>
         <module>PagedStorageManagement</module>
         <module>File System Structure</module>
         <module>Spooling</module>
+        <module>DiskScheduling_Algorithm</module>
     </modules>
 
 

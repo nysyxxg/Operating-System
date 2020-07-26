@@ -6,8 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="DiskScheduling_Algorithm" />
         <module name="Spooling" />
-        <module name="OSProcess" />
+        <module name="OSProcessScheduling_Algorithm" />
         <module name="pagedStorageManagement" />
         <module name="Java-DataStructure" />
         <module name="Page_Fault_Algorithm" />
@@ -15,10 +16,11 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="DiskScheduling_Algorithm" target="6" />
       <module name="File System Structure" target="7" />
       <module name="Java-DataStructure" target="1.5" />
       <module name="Operating-System" target="1.5" />
-      <module name="OSProcess" target="7" />
+      <module name="OSProcessScheduling_Algorithm" target="7" />
       <module name="Page_Fault_Algorithm" target="1.5" />
       <module name="pagedStorageManagement" target="7" />
       <module name="Spooling" target="1.5" />
