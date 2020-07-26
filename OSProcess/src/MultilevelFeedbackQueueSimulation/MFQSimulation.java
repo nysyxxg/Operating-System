@@ -35,7 +35,7 @@ public class MFQSimulation {
     public static double PCBsQueuesTimeSlice[] = new double[50];
 
     //多级反馈队列
-    public static PCBsQueue[] PCBsQueues = new PCBsQueue[50];
+    public static PCBsQueue[] pCBsQueues = new PCBsQueue[50];
 
     //记录已经使用的pid
     public static int[] pidsUsed = new int[101];
@@ -105,8 +105,8 @@ public class MFQSimulation {
 
         Arrays.fill(pidsUsed, 1, 101, 0);
 
-        for (int i = 0; i < PCBsQueues.length; i++) {
-            PCBsQueues[i] = new PCBsQueue(i);
+        for (int i = 0; i < pCBsQueues.length; i++) {
+            pCBsQueues[i] = new PCBsQueue(i);
         }
 
         for (int i = PCBsQueuesTimeSlice.length - 1; i >= 0; i--) {
@@ -191,11 +191,11 @@ public class MFQSimulation {
             //创建进程的PCB
             PCB pcb = new PCB(randomPid, "Ready", randomPriority, randomLife);
 
-            LinkedList<PCB> queue = PCBsQueues[randomPriority].getQueue();
+            LinkedList<PCB> queue = pCBsQueues[randomPriority].getQueue();
             queue.offer(pcb);
-            PCBsQueues[randomPriority].setQueue(queue);
+            pCBsQueues[randomPriority].setQueue(queue);
 
-            showPCBQueues(PCBsQueues);
+            showPCBQueues(pCBsQueues);
         }
     }
 
@@ -209,14 +209,14 @@ public class MFQSimulation {
             public void run() {
                 //当前内存中还留有进程未执行
                 while (currentPCBsNum != 0 && !isStopScheduling) {
-                    for (int i = PCBsQueues.length - 1; i >= 0; i--) {
-                        LinkedList<PCB> queue = PCBsQueues[i].getQueue();
+                    for (int i = pCBsQueues.length - 1; i >= 0; i--) {
+                        LinkedList<PCB> queue = pCBsQueues[i].getQueue();
 
                         if (queue.size() > 0) {
                             //读取该队列首个PCB
                             PCB pcb = queue.element();
                             pcb.setStatus("Running");
-                            showPCBQueues(PCBsQueues);
+                            showPCBQueues(pCBsQueues);
 
                             int pid = pcb.getPid();
                             int priority = pcb.getPriority();
@@ -237,27 +237,23 @@ public class MFQSimulation {
                                 queue.poll();
                                 pidsUsed[pid] = 0;
                                 currentPCBsNum--;
-                            }
-                            //若该进程还未执行完成,则改变其PCB的相关参数,并插入其优先级所对应的队列尾部
-                            else {
+                            } else {//若该进程还未执行完成,则改变其PCB的相关参数,并插入其优先级所对应的队列尾部
                                 //移除该队列的首个PCB
                                 queue.poll();
-
                                 pcb.setPriority(priority);
                                 pcb.setLife(life);
                                 pcb.setStatus("Ready");
-                                LinkedList<PCB> nextQueue = PCBsQueues[priority].getQueue();
+                                LinkedList<PCB> nextQueue = pCBsQueues[priority].getQueue();
                                 nextQueue.offer(pcb);
-                                PCBsQueues[priority].setQueue(nextQueue);
+                                pCBsQueues[priority].setQueue(nextQueue);
                             }
-
                             break;
                         }
                     }
                 }
 
                 initMemory();
-                showPCBQueues(PCBsQueues);
+                showPCBQueues(pCBsQueues);
                 //所有进程均执行完成，进程调度完成
                 JOptionPane.showMessageDialog(frame, "Process scheduling over!");
             }
