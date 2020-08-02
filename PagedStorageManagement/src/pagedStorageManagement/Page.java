@@ -1,5 +1,8 @@
 package pagedStorageManagement;
 
+/**
+ * 分页存储对象
+ */
 public class Page {
 	private int pageNumber;//页号
 	private int physicsNumber;//物理页号
