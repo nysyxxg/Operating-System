@@ -43,7 +43,7 @@ public class TLBuffer {
         return length;
     }
 
-    public int searchPage(int pageNumber) {
+    public int searchPageByPageNumber(int pageNumber) {
         int i = 0;
         if (this.changeNumber == 0 && this.current == 0) {
             return -2;

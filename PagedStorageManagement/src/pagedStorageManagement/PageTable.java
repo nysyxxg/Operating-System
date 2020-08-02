@@ -19,7 +19,7 @@ public class PageTable {// 这个对象表示 -- 页表
 		this.length = length;
 		this.current = 0;
 		pageTable = new Page[length];
-		for (int i = 0; i < length; i++) {
+		for (int i = 0; i < length; i++) {// 初始化page对象
 			this.pageTable[i] = new Page();
 		}
 	}
