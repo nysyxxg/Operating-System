@@ -2,7 +2,7 @@ package pagedStorageManagement;
 
 /**
  * TLB --
- * 这个对象表示-- 快表
+ * 这个对象表示-- 快表 --- 对应Buffer缓冲区
  */
 public class TLBuffer {
     protected  Page quickTable[];
@@ -66,7 +66,7 @@ public class TLBuffer {
         }
     }
 
-    public void changeKShell(PageTable pageTable, int number) {
+    public void changeQuickTable(PageTable pageTable, int number) {
         if (this.getChangeNumber() >= this.getLength()) {
             if (this.getCurrent() == this.getLength()) {
                 this.setCurrent(0);

@@ -43,7 +43,7 @@ public class Test {
 			//检测快表,快表存储当前的页表项，即当快表满时采用最近最久未被使用算法置换快表
 			System.out.println("进入快表检测");
 			if (tlb.getCurrent() > 0) {
-				number = tlb.searchPageByPageNumber(pageNumber);// 从【快表】中， 根据输入的页面的PageNumber进行查找
+				number = tlb.searchPageByPageNumber(pageNumber);// 从【快表--buffer】中， 根据输入的页面的PageNumber进行查找
 				if (number != -1 && number != -2) {
 					result = memoryData[tlb.quickTable[number].getPhysicsNumber()];// 获取物理页号
 					System.out.println("在快表中找到，结果为：" + result);
@@ -56,20 +56,20 @@ public class Test {
 				System.out.println("在快表中找不到！" + "进入内存检测：");
 				//在快表中找不到,去内存区的页表找
 				if (pageinnerTable.current > 0) {
-					number = pageinnerTable.searchPage(pageNumber);//从【页表】中，开始根据页号pageNumber，进行搜索所在的下标
+					number = pageinnerTable.searchPage(pageNumber);//从【页表--内存】中，开始根据页号pageNumber，进行搜索所在的下标
 					if (number != -1 && number != -2) {
 						result = memoryData[pageinnerTable.pageTable[number].getPhysicsNumber()];
 						System.out.println("在页表中找到,结果为:" + result);
 						//修改访问字段和状态位
 						pageinnerTable.pageTable[number].setVisitCount(pageinnerTable.pageTable[number].getVisitCount() + 1);
 						//修改快表
-						tlb.changeKShell(pageinnerTable, number);
+						tlb.changeQuickTable(pageinnerTable, number);
 					}
 				}
 				if (pageinnerTable.current <= 0 || number == -1) {
 					System.out.println("在内存中找不到！");
 					System.out.println("从外存中调入内存：");
-					//在页表找不到，去外存区找
+					//在页表找不到，去外存区找 -----  从【外表--外存--磁盘】 中查找
 					for (i = 0; i < sLength; i++) {
 						if (pageNumber == externalTable[i].getPageNumber()) {//在外存找到了缺页
 							k2 = pageinnerTable.isOver();
@@ -98,8 +98,8 @@ public class Test {
 							pageinnerTable.pageTable[t].setChange(false);
 							pageinnerTable.pageTable[t].setCRTAddress(i);
 							System.out.println("调入内存成功！");
-							//修改快表
-							tlb.changeKShell(pageinnerTable, t);
+							//修改快表 -- 修改tlb 缓冲区
+							tlb.changeQuickTable(pageinnerTable, t);
 							System.out.println("修改快表成功！");
 							System.out.println("结果为：" + memoryData[k3 - 1]);
 							break;
