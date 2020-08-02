@@ -1,23 +1,25 @@
 package pagedStorageManagement;
 
-public class KShell {
-    Page shell[];
+/**
+ * TLB --
+ * 这个对象表示-- 快表
+ */
+public class TLBuffer {
+    Page quickTable[];
     private int current;
     private int length;
     private int changeNumber;//修改快表的次数
 
-    public KShell() {
+    public TLBuffer() {
     }
 
-    ;
-
-    public KShell(int length) {
+    public TLBuffer(int length) {
         this.length = length;
         this.current = 0;
         this.changeNumber = 0;
-        shell = new Page[length];
+        quickTable = new Page[length];
         for (int i = 0; i < length; i++) {
-            this.shell[i] = new Page();
+            this.quickTable[i] = new Page();
         }
     }
 
@@ -47,7 +49,7 @@ public class KShell {
             return -2;
         } else if (this.changeNumber < this.length) {
             while (i < this.current) {
-                if (this.shell[i].getPageNumber() == pageNumber) {
+                if (this.quickTable[i].getPageNumber() == pageNumber) {
                     return i;
                 }
                 i++;
@@ -55,7 +57,7 @@ public class KShell {
             return -1;
         } else {
             while (i < this.length) {
-                if (this.shell[i].getPageNumber() == pageNumber) {
+                if (this.quickTable[i].getPageNumber() == pageNumber) {
                     return i;
                 }
                 i++;
@@ -64,17 +66,17 @@ public class KShell {
         }
     }
 
-    public void changeKShell(Shell pageShell, int number) {
+    public void changeKShell(InnerTable pageShell, int number) {
         if (this.getChangeNumber() >= this.getLength()) {
             if (this.getCurrent() == this.getLength()) {
                 this.setCurrent(0);
             }
-            System.out.println("快表已满，快表中即将调出页号" + this.shell[this.current].getPageNumber());
+            System.out.println("快表已满，快表中即将调出页号" + this.quickTable[this.current].getPageNumber());
         }
         if (this.getCurrent() < this.getLength()) {
-            this.shell[this.getCurrent()].setCRTAddress(number);
-            this.shell[this.getCurrent()].setPageNumber(pageShell.shell[number].getPageNumber());
-            this.shell[this.getCurrent()].setPhysicsNumber(pageShell.shell[number].getPhysicsNumber());
+            this.quickTable[this.getCurrent()].setCRTAddress(number);
+            this.quickTable[this.getCurrent()].setPageNumber(pageShell.innerTable[number].getPageNumber());
+            this.quickTable[this.getCurrent()].setPhysicsNumber(pageShell.innerTable[number].getPhysicsNumber());
             this.setCurrent(this.getCurrent() + 1);
             this.setChangeNumber(this.getChangeNumber() + 1);
         }
@@ -84,7 +86,7 @@ public class KShell {
         System.out.println("快表：");
         System.out.println("索引\t" + "页号\t" + "物理块号\t" + "在页表下的索引");
         for (int i = 0; i < this.length; i++) {
-            System.out.println(i + "\t" + this.shell[i].getPageNumber() + "\t" + this.shell[i].getPhysicsNumber() + "\t" + this.shell[i].getCRTAddress());
+            System.out.println(i + "\t" + this.quickTable[i].getPageNumber() + "\t" + this.quickTable[i].getPhysicsNumber() + "\t" + this.quickTable[i].getCRTAddress());
         }
     }
 }

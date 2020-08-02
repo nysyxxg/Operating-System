@@ -1,15 +1,18 @@
 package pagedStorageManagement;
 
-public class Source {
+/**
+ * 这个对象表示---- 外表 --- 对应外存
+ */
+public class ExternalTable {// 这个对象表示---- 外表
     private int pageNumber;//页号
     private int sts;//数据
     private int length;
 
-    public Source() {
+    public ExternalTable() {
     }
 
 
-    public Source(int pageNumber, int sts) {
+    public ExternalTable(int pageNumber, int sts) {
         this.pageNumber = pageNumber;
         this.sts = sts;
     }
