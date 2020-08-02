@@ -95,7 +95,7 @@ public class PageTable {// 这个对象表示 -- 页表
 		System.out.println("页表:");
 		System.out.println("索引\t" + "页号\t" + "物理块号\t" + "状态\t" + "访问次数\t" + "修改\t" + "外存地址\t");
 		for (int i = 0; i < this.length; i++) {
-			System.out.println(i + "\t" + this.pageTable[i].getPageNumber() + "\t" + this.pageTable[i].getPhysicsNumber() + "\t" + this.pageTable[i].getState() + "\t" + this.pageTable[i].getVisitCount() + "\t" + this.pageTable[i].getChange() + "\t" + this.pageTable[i].getCRTAddress());
+			System.out.println(i + "	\t" + this.pageTable[i].getPageNumber() + "	\t" + this.pageTable[i].getPhysicsNumber() + "		\t" + this.pageTable[i].getState() + "	  \t" + this.pageTable[i].getVisitCount() + "	\t" + this.pageTable[i].getChange() + "	\t" + this.pageTable[i].getCRTAddress());
 		}
 	}
 

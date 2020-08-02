@@ -86,7 +86,7 @@ public class TLBuffer {
         System.out.println("快表：");
         System.out.println("索引\t" + "页号\t" + "物理块号\t" + "在页表下的索引");
         for (int i = 0; i < this.length; i++) {
-            System.out.println(i + "\t" + this.quickTable[i].getPageNumber() + "\t" + this.quickTable[i].getPhysicsNumber() + "\t" + this.quickTable[i].getCRTAddress());
+            System.out.println(i + "    \t" + this.quickTable[i].getPageNumber() + "    \t" + this.quickTable[i].getPhysicsNumber() + "     \t" + this.quickTable[i].getCRTAddress());
         }
     }
 }
