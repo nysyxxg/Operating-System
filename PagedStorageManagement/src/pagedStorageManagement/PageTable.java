@@ -7,20 +7,20 @@ import java.util.Scanner;
  * java实现页式存储管理
  * https://blog.csdn.net/pudongqi/article/details/78740095
  */
-public class InnerTable {// 这个对象表示 -- 页表
-	protected Page innerTable[];
+public class PageTable {// 这个对象表示 -- 页表
+	protected Page pageTable[];
 	protected int current;
 	private int length;
 
-	public InnerTable() {
+	public PageTable() {
 	}
 
-	public InnerTable(int length) {
+	public PageTable(int length) {
 		this.length = length;
 		this.current = 0;
-		innerTable = new Page[length];
+		pageTable = new Page[length];
 		for (int i = 0; i < length; i++) {
-			this.innerTable[i] = new Page();
+			this.pageTable[i] = new Page();
 		}
 	}
 
@@ -38,7 +38,7 @@ public class InnerTable {// 这个对象表示 -- 页表
 			return -2;
 		} else {
 			while (i < this.current) {
-				if (this.innerTable[i].getPageNumber() == pageNumber) {
+				if (this.pageTable[i].getPageNumber() == pageNumber) {
 					return i;
 				}
 				i++;
@@ -52,8 +52,8 @@ public class InnerTable {// 这个对象表示 -- 页表
 		switch (ch) {
 			case "yes": {
 				System.out.println("请输入一个新的数据");
-				b[this.innerTable[number].getPhysicsNumber()] = a.nextInt();
-				this.innerTable[number].setChange(true);
+				b[this.pageTable[number].getPhysicsNumber()] = a.nextInt();
+				this.pageTable[number].setChange(true);
 				System.out.println("修改成功");
 				break;
 			}
@@ -77,7 +77,7 @@ public class InnerTable {// 这个对象表示 -- 页表
 	public int minVisitCount() {
 		int i, t = 0;
 		for (i = 1; i < this.current; i++) {
-			if (this.innerTable[i].getVisitCount() < this.innerTable[t].getVisitCount()) {
+			if (this.pageTable[i].getVisitCount() < this.pageTable[t].getVisitCount()) {
 				t = i;
 			}
 		}
@@ -85,17 +85,17 @@ public class InnerTable {// 这个对象表示 -- 页表
 	}
 
 	public int isChange(int number) {
-		if (this.innerTable[number].getChange() == true) {
+		if (this.pageTable[number].getChange() == true) {
 			return 1;
 		} else
 			return 0;
 	}
 
-	public void printPageinnerTable() {
+	public void printPageTable() {
 		System.out.println("页表:");
 		System.out.println("索引\t" + "页号\t" + "物理块号\t" + "状态\t" + "访问次数\t" + "修改\t" + "外存地址\t");
 		for (int i = 0; i < this.length; i++) {
-			System.out.println(i + "\t" + this.innerTable[i].getPageNumber() + "\t" + this.innerTable[i].getPhysicsNumber() + "\t" + this.innerTable[i].getState() + "\t" + this.innerTable[i].getVisitCount() + "\t" + this.innerTable[i].getChange() + "\t" + this.innerTable[i].getCRTAddress());
+			System.out.println(i + "\t" + this.pageTable[i].getPageNumber() + "\t" + this.pageTable[i].getPhysicsNumber() + "\t" + this.pageTable[i].getState() + "\t" + this.pageTable[i].getVisitCount() + "\t" + this.pageTable[i].getChange() + "\t" + this.pageTable[i].getCRTAddress());
 		}
 	}
 
@@ -112,14 +112,14 @@ public class InnerTable {// 这个对象表示 -- 页表
 
 	public void dealFunction(int i, TLBuffer TLB, ExternalTable s[], int b[]) {
 		if (i == 1) {
-			this.printPageinnerTable();
+			this.printPageTable();
 		} else if (i == 2) {
-			TLB.printKShell();
+			TLB.printQuickTable();
 		} else if (i == 3) {
 			System.out.println("外存：");
 			System.out.println("外存地址\t" + "页号\t" + "数据\n");
 			for (int k = 0; k < 20; k++) {
-				s[k].printSource(k);
+				s[k].printExternalTable(k);
 			}
 		} else if (i == 4) {
 			String ch = "yes";

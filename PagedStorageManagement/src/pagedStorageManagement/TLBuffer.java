@@ -66,7 +66,7 @@ public class TLBuffer {
         }
     }
 
-    public void changeKShell(InnerTable pageShell, int number) {
+    public void changeKShell(PageTable pageTable, int number) {
         if (this.getChangeNumber() >= this.getLength()) {
             if (this.getCurrent() == this.getLength()) {
                 this.setCurrent(0);
@@ -75,14 +75,14 @@ public class TLBuffer {
         }
         if (this.getCurrent() < this.getLength()) {
             this.quickTable[this.getCurrent()].setCRTAddress(number);
-            this.quickTable[this.getCurrent()].setPageNumber(pageShell.innerTable[number].getPageNumber());
-            this.quickTable[this.getCurrent()].setPhysicsNumber(pageShell.innerTable[number].getPhysicsNumber());
+            this.quickTable[this.getCurrent()].setPageNumber(pageTable.pageTable[number].getPageNumber());
+            this.quickTable[this.getCurrent()].setPhysicsNumber(pageTable.pageTable[number].getPhysicsNumber());
             this.setCurrent(this.getCurrent() + 1);
             this.setChangeNumber(this.getChangeNumber() + 1);
         }
     }
 
-    public void printKShell() {
+    public void printQuickTable() {
         System.out.println("快表：");
         System.out.println("索引\t" + "页号\t" + "物理块号\t" + "在页表下的索引");
         for (int i = 0; i < this.length; i++) {
