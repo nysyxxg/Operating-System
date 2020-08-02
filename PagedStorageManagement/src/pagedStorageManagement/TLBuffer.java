@@ -5,7 +5,7 @@ package pagedStorageManagement;
  * 这个对象表示-- 快表
  */
 public class TLBuffer {
-    Page quickTable[];
+    protected  Page quickTable[];
     private int current;
     private int length;
     private int changeNumber;//修改快表的次数

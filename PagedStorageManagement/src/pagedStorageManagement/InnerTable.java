@@ -8,7 +8,7 @@ import java.util.Scanner;
  * https://blog.csdn.net/pudongqi/article/details/78740095
  */
 public class InnerTable {// 这个对象表示 -- 页表
-	Page innerTable[];
+	protected Page innerTable[];
 	private int current;
 	private int length;
 
